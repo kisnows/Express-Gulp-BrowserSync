@@ -4,5 +4,5 @@
 # IntelliJ project files
 .idea
 gen
-node_modules
 # Created by .ignore support plugin (hsz.mobi)
+node_modules

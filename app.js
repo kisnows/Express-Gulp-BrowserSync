@@ -14,12 +14,24 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// path
+var viewPath = path.join(__dirname, 'views');
+var sassPath = path.join(__dirname, 'sass');
+var staticPath = path.join(__dirname, 'public');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+//app.use(require('node-sass-middleware')({
+//  src: sassPath,
+//  dest: staticPath,
+//  outputStyle: 'compressed',
+//  sourceComments: 'map',
+//  debug: true
+//}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

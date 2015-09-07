@@ -6,14 +6,27 @@ var reload = browserSync.reload;
 var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var nodemon = require('gulp-nodemon');
+//var less = require('gulp-less');
+//var sourcemaps = require('gulp-sourcemaps');
 
 //dev task start
+//TODO can not compile the sass or less file
 gulp.task('sass', function () {
-  return gulp.src('public/scss/*.scss')
+  return gulp.src('./sass/css/main.scss')
     .pipe(sass({outputStyle: 'compressed', sourceComments: 'map'}, {errLogToConsole: true}))
-    .pipe(prefix("last 2 versions", "> 1%", "ie 8", "Android 2", "Firefox ESR"))
-    .pipe(gulp.dest('public/css'))
+    .pipe(prefix("last 2 versions", "> 1%", "ie 8", "Android 2"))
+    .pipe(gulp.dest('/public/css'))
     .pipe(reload({stream: true}));
+});
+
+gulp.task('less',function(){
+  gulp.src('./less/**/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(less())
+    .on('error',function(e){console.log(e);})
+    .pipe(prefix("last 2 versions", "> 1%", "ie 8", "Android 2"))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('browser-sync', ['nodemon'], function () {
@@ -43,5 +56,6 @@ gulp.task('nodemon', function (cb) {
 //build task start
 //TODO add build task
 //build task end
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', ['browser-sync', 'sass'], function () {
+  gulp.watch("sass/**/*.*", ['sass']);
 });
