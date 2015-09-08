@@ -1,0 +1,105 @@
+.ui-header {
+  width: 100%;
+  height: 80px;
+  background-color: $white;
+  .header-inner {
+    @include clearfix;
+    margin: 0 auto;
+    width: 1200px;
+    height: 100%;
+  }
+  .logo {
+    @include float(left);
+    margin-top: 24px;
+    img {
+      display: block;
+    }
+  }
+  .nav {
+    @include float(left);
+    height: 80px;
+    line-height: 80px;
+    ul {
+      height: 45px;
+      line-height: 50px;
+    }
+    .nav-item {
+      position: relative;
+      float: left;
+      margin-left: 16px;
+      .nav-title {
+        cursor: pointer;
+      }
+      a.nav-title {
+        padding: 4px 10px;
+        color: $header-color;
+        &:hover {
+          border-radius: 4px;
+          background: $red;
+          color: $white;
+        }
+        &.active {
+          border-radius: 4px;
+          background: $red;
+          color: $white;
+        }
+      }
+
+      .user-center {
+        width: 116px;
+      }
+    }
+
+    .nav-item:hover {
+      span.nav-title {
+        background: $gray;
+      }
+      .sub {
+        z-index: 10;
+        display: block;
+      }
+    }
+  }
+  .user-cen {
+    position: relative;
+    float: right;
+    margin-top: 16px;
+    span.nav-title {
+      display: block;
+      box-sizing: border-box;
+      width: 36px;
+      height: 36px;
+    }
+    .sub {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      display: none;
+      margin: 0;
+      padding: 20px 0;
+      border-radius: 0 4px 4px 4px;
+      background: $gray;
+      white-space: nowrap;
+      .sublist {
+        padding: 0 18px;
+        min-width: 80px;
+        height: 32px;
+        line-height: 32px;
+        cursor: pointer;
+        &:hover {
+          background: $red;
+          color: $white;
+        }
+      }
+    }
+    &:hover {
+      span.nav-title {
+        background: $gray;
+      }
+      .sub {
+        z-index: 10;
+        display: block;
+      }
+    }
+  }
+}

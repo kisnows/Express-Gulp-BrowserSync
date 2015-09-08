@@ -2,6 +2,11 @@ doctype html
 html
   head
     title= title
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
     link(rel='stylesheet', href='/css/main.css')
+    block head
+      script(src='/js/libs/jquery.js')
   body
+    include ../includes/header
     block content
+    include ../includes/footer

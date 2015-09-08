@@ -1,4 +1,11 @@
-@import "normalize";
-@import "mixins";
+@import 'normalize';
+@import 'mixins';
+@import 'config';
 
-@import "pages/index";
+@import 'global';
+//includes
+@import 'includes/header';
+@import 'includes/footer';
+
+//pages
+@import 'pages/index';
