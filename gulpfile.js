@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var prefix = require('gulp-autoprefixer');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
+var jade = require('gulp-jade');
 
 //dev task start
 //TODO can not compile the sass or less file
@@ -45,9 +46,17 @@ gulp.task('nodemon', function (cb) {
 });
 //dev task end
 
+
 //build task start
 //TODO add build task
+gulp.task('jade', function () {
+  return gulp.src(['views/**/*.jade','!views/error.jade'])
+    .pipe(jade({pretty:true}))
+    .pipe(gulp.dest('./public/views'));
+});
 //build task end
+
+
 gulp.task('default', ['browser-sync', 'sass'], function () {
   gulp.watch('sass/**/*.*', ['sass']);
 });
