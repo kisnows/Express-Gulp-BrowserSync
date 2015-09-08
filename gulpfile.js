@@ -60,3 +60,4 @@ gulp.task('jade', function () {
 gulp.task('default', ['browser-sync', 'sass'], function () {
   gulp.watch('sass/**/*.*', ['sass']);
 });
+
