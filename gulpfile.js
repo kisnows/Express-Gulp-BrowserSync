@@ -27,6 +27,7 @@ gulp.task('browser-sync', ['nodemon'], function () {
     proxy: 'http://localhost:3000',
     files: ['public/**/*.*', 'views/**/*.*'],
     browser: 'google chrome',
+    notify: false,
     port: 5000
   });
 });

@@ -4,7 +4,7 @@
 }
 
 @mixin image-url($path) {
-  background-image: url('/images/#{$path}');
+  background-image: url('./images/#{$path}');
 }
 
 @mixin clearfix {

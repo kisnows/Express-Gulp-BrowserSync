@@ -26,13 +26,13 @@
     .nav-item {
       position: relative;
       float: left;
-      margin-left: 16px;
+      margin-left: 24px;
       .nav-title {
         cursor: pointer;
       }
       a.nav-title {
         padding: 4px 10px;
-        color: $header-color;
+        color: $text-dark-color;
         &:hover {
           border-radius: 4px;
           background: $red;
@@ -65,20 +65,25 @@
     float: right;
     margin-top: 16px;
     span.nav-title {
+      position: relative;
+      z-index: 10;
       display: block;
       box-sizing: border-box;
+      margin-right: 42px;
       width: 36px;
       height: 36px;
+      background: url('/images/user.png') center center no-repeat;
     }
     .sub {
       position: absolute;
-      top: 36px;
-      left: 0;
+      top: -10px;
+      right: 0;
       display: none;
       margin: 0;
-      padding: 20px 0;
+      padding: 60px 0 10px;
       border-radius: 0 4px 4px 4px;
       background: $gray;
+      text-align: center;
       white-space: nowrap;
       .sublist {
         padding: 0 18px;
@@ -93,11 +98,8 @@
       }
     }
     &:hover {
-      span.nav-title {
-        background: $gray;
-      }
       .sub {
-        z-index: 10;
+        z-index: 9;
         display: block;
       }
     }
