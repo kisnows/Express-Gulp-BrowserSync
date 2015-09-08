@@ -22,9 +22,8 @@
   "devDependencies": {
     "browser-sync": "^2.9.1",
     "gulp-autoprefixer": "^3.0.1",
-    "gulp-less": "^3.0.3",
     "gulp-nodemon": "^2.0.4",
     "gulp-sass": "^2.0.4",
-    "node-sass-middleware": "^0.9.0"
+    "gulp-sourcemaps": "^1.5.2"
   }
 }
