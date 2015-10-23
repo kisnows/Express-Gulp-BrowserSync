@@ -8,7 +8,7 @@ var prefix = require('gulp-autoprefixer');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
 var jade = require('gulp-jade');
-
+var del = require('del');
 //dev task start
 //TODO can not compile the sass or less file
 gulp.task('sass', function () {
@@ -23,6 +23,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('browser-sync', ['nodemon'], function () {
+  del(['./public/*.html']);
   browserSync.init(null, {
     proxy: 'http://localhost:3000',
     files: ['public/**/*.*', 'views/**/*.*'],
@@ -33,7 +34,7 @@ gulp.task('browser-sync', ['nodemon'], function () {
 });
 
 gulp.task('nodemon', function (cb) {
-
+  
   var called = false;
 
   return nodemon({
