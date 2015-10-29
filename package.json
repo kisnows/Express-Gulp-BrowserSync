@@ -6,9 +6,9 @@
     "start": "node ./bin/www"
   },
   "author": {
-    "name": "yuanqi",
-    "email": "yuanqi@cairenhui.com",
-    "url": "http://git.cairenhui.com/KYSEC/xiangdaogroup-fe"
+    "name": "kisnows",
+    "email": "yq12315@gmail.com",
+    "url": "https://github.com/kisnows/Express-Gulp-BrowserSync"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
