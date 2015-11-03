@@ -1,18 +1,17 @@
-'use strict';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import sass from 'gulp-sass';
+import prefix from 'gulp-autoprefixer';
+import nodemon from 'gulp-nodemon';
+import sourcemaps from 'gulp-sourcemaps';
+import jade from 'gulp-jade';
+import del from 'del';
 
-var gulp        = require('gulp');
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
-var sass        = require('gulp-sass');
-var prefix      = require('gulp-autoprefixer');
-var nodemon     = require('gulp-nodemon');
-var sourcemaps  = require('gulp-sourcemaps');
-var jade        = require('gulp-jade');
-var del         = require('del');
-
+const reload = browserSync.reload;
 //dev task start
 //DONE can not compile the sass or less file
-gulp.task('sass', function () {
+
+gulp.task('sass', ()=> {
   return gulp.src(['./sass/main.scss'])
     .pipe(sourcemaps.init())
     .pipe(sass({errLogToConsole: true})
@@ -23,7 +22,7 @@ gulp.task('sass', function () {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('browser-sync', ['nodemon'], function () {
+gulp.task('browser-sync', ['nodemon'], () => {
   browserSync.init(null, {
     proxy: 'http://localhost:3002',
     files: ['public/**/*.*', 'views/**/*.*', 'submodule/**/*.*'],
@@ -33,9 +32,9 @@ gulp.task('browser-sync', ['nodemon'], function () {
   });
 });
 
-gulp.task('nodemon', function (cb) {
+gulp.task('nodemon', (cb)=> {
 
-  var called = false;
+  let called = false;
 
   return nodemon({
     script: 'bin/www'
@@ -52,37 +51,37 @@ gulp.task('nodemon', function (cb) {
 
 //build task start
 //DONE add build task
-gulp.task('jade', function () {
+gulp.task('jade', ()=> {
   return gulp.src([
-    'views/**/*.jade',
-    '!views/error.jade',
-    '!views/components/**/*.jade',
-    '!views/includes/**/*.jade',
-    '!views/index-parts/*.jade',
-    '!views/layout/**/*.jade'
-  ])
+      'views/**/*.jade',
+      '!views/error.jade',
+      '!views/components/**/*.jade',
+      '!views/includes/**/*.jade',
+      '!views/index-parts/*.jade',
+      '!views/layout/**/*.jade'
+    ])
     .pipe(jade({pretty: true}))
     .pipe(gulp.dest('./dist'));
 });
 //build task end
 
-gulp.task('clean', function (cb) {
+gulp.task('clean', (cb)=> {
   del(['./dist/*'], cb)
 });
 
-gulp.task('copy', function () {
+gulp.task('copy', ()=> {
   return gulp.src([
-    'public/css/**/*',
-    'public/images/**/*',
-    'public/js/**/*'
-  ], {base: './public'})
+      'public/css/**/*',
+      'public/images/**/*',
+      'public/js/**/*'
+    ], {base: './public'})
     .pipe(gulp.dest('./dist'))
 });
 
 gulp.task('dist', ['clean', 'copy', 'jade']);
 
 
-gulp.task('default', ['browser-sync', 'sass'], function () {
+gulp.task('default', ['browser-sync', 'sass'], ()=> {
   gulp.watch(['sass/**/*.*'], ['sass']);
 });
 
