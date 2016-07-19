@@ -1,0 +1,11 @@
+@import 'normalize';
+@import 'mixins';
+@import 'config';
+
+@import 'global';
+//includes
+@import 'includes/_header';
+@import 'includes/_footer';
+
+//pages
+@import 'pages/index';
